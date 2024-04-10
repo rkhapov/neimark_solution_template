@@ -1,17 +1,17 @@
 .data
-hello:
+vm_string:
+    .ascii "VM"
+    vm_string_len = . - vm_string
+
+hw_string:
     .ascii "HW"
-    len = . - hello
+    hw_string_len = . - hw_string
 
 .text
 .globl _start
 
 _start:
-    mov $1, %rax
-    mov $1, %rdi
-    mov $hello, %rsi
-    mov $len, %rdx
-    syscall
+    # write vm_string or hw_string to stdout here
 
     mov $60, %rax
     xor %rdi, %rdi
